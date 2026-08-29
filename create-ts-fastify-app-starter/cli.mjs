@@ -194,8 +194,17 @@ async function removeMaintainerOnlyFiles(root) {
   );
   await writeFile(packagePath, `${JSON.stringify(packageJson, null, 2)}\n`, 'utf8');
 
+  const eslintPath = join(root, 'eslint.config.mjs');
+  const eslintConfig = await readFile(eslintPath, 'utf8');
+  await writeFile(
+    eslintPath,
+    eslintConfig.replace("'create-ts-fastify-app-starter/**/*.mjs', ", ''),
+    'utf8',
+  );
+
   await rm(join(root, 'scripts/check-starter-version.mjs'), { force: true });
   await rm(join(root, 'scripts/verify-generated-project.mjs'), { force: true });
+  await rm(join(root, '.starter-version'), { force: true });
 }
 
 async function main() {

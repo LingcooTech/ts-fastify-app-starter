@@ -21,14 +21,6 @@ try {
     },
   );
 
-  const starterVersion = (await readFile(resolve(root, '.starter-version'), 'utf8')).trim();
-  const generatedVersion = (await readFile(join(project, '.starter-version'), 'utf8')).trim();
-  if (generatedVersion !== starterVersion) {
-    throw new Error(
-      `generated .starter-version is ${generatedVersion}, expected ${starterVersion}`,
-    );
-  }
-
   const packageJson = JSON.parse(await readFile(join(project, 'package.json'), 'utf8'));
   if (packageJson.name !== projectName) {
     throw new Error(`generated package name is ${packageJson.name}, expected ${projectName}`);
@@ -44,6 +36,7 @@ try {
   for (const path of [
     'scripts/check-starter-version.mjs',
     'scripts/verify-generated-project.mjs',
+    '.starter-version',
   ]) {
     try {
       await access(join(project, path));

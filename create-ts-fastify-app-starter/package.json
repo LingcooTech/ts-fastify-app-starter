@@ -1,6 +1,6 @@
 {
   "name": "@lingcoo-tech/create-ts-fastify-app-starter",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "templateVersion": "0.1.0",
   "description": "Create a production-ready native Fastify application workspace.",
   "license": "Apache-2.0",
