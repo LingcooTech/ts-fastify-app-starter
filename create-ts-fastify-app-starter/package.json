@@ -1,0 +1,34 @@
+{
+  "name": "@lingcoo-tech/create-ts-fastify-app-starter",
+  "version": "0.1.1",
+  "templateVersion": "0.1.0",
+  "description": "Create a production-ready native Fastify application workspace.",
+  "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "type": "module",
+  "scripts": {
+    "check": "node --check cli.mjs"
+  },
+  "bin": {
+    "create-ts-fastify-app-starter": "cli.mjs"
+  },
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "files": [
+    "cli.mjs",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LingcooTech/ts-fastify-app-starter.git",
+    "directory": "create-ts-fastify-app-starter"
+  },
+  "homepage": "https://github.com/LingcooTech/ts-fastify-app-starter",
+  "bugs": {
+    "url": "https://github.com/LingcooTech/ts-fastify-app-starter/issues"
+  }
+}
