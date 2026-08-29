@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { execFileSync } from 'node:child_process';
-import { createWriteStream, existsSync } from 'node:fs';
+import { createWriteStream, existsSync, realpathSync } from 'node:fs';
 import { cp, mkdir, mkdtemp, readdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { basename, join, resolve } from 'node:path';
 import { tmpdir } from 'node:os';
@@ -238,7 +238,10 @@ async function main() {
 
 export { copyTemplate, main, parseArgs, removeMaintainerOnlyFiles, transformFiles };
 
-if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+const invokedPath = process.argv[1] ? realpathSync(process.argv[1]) : undefined;
+const modulePath = realpathSync(fileURLToPath(import.meta.url));
+
+if (invokedPath && invokedPath === modulePath) {
   main().catch((error) => {
     console.error(`\nError: ${error.message}`);
     process.exitCode = 1;
